@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "234351174455",
+    "firebase_url": "https://reservationcentre-d7b77-default-rtdb.firebaseio.com",
+    "project_id": "reservationcentre-d7b77",
+    "storage_bucket": "reservationcentre-d7b77.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:234351174455:android:b1d0dadd7623d08facf0b2",
+        "android_client_info": {
+          "package_name": "com.example.applicationreservationcentre"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "234351174455-ke9ra90kf09mth1r7ftu5nc4e7bviis4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.applicationreservationcentre",
+            "certificate_hash": "2d58f40d03cd1db24c8ac7806bb7bb8f4724f2ec"
+          }
+        },
+        {
+          "client_id": "234351174455-5dhbeugm4tqv021i37h8abqh9954qm56.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACPLW676rav8g6khhd_WdlxmY4DCPmfz4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "234351174455-5dhbeugm4tqv021i37h8abqh9954qm56.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
