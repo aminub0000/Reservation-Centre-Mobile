@@ -20,6 +20,17 @@
     </style>
 
     <style name="Theme.ApplicationReservationCentre.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
+    //
     <style name="Theme.ApplicationReservationCentre.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="behavior_peekHeight">800dp</item>
+    </style>
+    <style name="color_theme_login" parent="">
+        <item name="colorPrimary">@color/color_login_purple</item>
+    </style>
 </resources>
