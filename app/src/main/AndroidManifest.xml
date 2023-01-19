@@ -13,6 +13,13 @@
         android:theme="@style/Theme.ApplicationReservationCentre"
         tools:targetApi="31">
         <activity
+            android:name=".create_account"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".login"
             android:exported="true"
             android:theme="@style/Theme.Design.Light.NoActionBar">
@@ -21,6 +28,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -30,8 +38,6 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.ApplicationReservationCentre.NoActionBar">
-
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
