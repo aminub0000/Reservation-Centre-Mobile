@@ -4,19 +4,25 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.utils.widget.ImageFilterView;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.util.Pair;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.Selection;
 import android.text.TextUtils;
@@ -24,6 +30,7 @@ import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -34,6 +41,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
@@ -48,7 +56,21 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
+import java.util.Locale;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.NoSuchProviderException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+import eightbitlab.com.blurview.BlurView;
+import eightbitlab.com.blurview.RenderScriptBlur;
 
 public class login extends AppCompatActivity {
 
@@ -80,11 +102,14 @@ public class login extends AppCompatActivity {
     EditText txt_password;
     EditText txt_password2;
     private StorageTask mUploadTask;
+    compoment_ compoment = new compoment_();
+    BlurView blurview;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getlocal();
         setContentView(R.layout.activity_login);
         storageRef = FirebaseStorage.getInstance().getReference();
         ref = FirebaseDatabase.getInstance().getReference("Comptes");
@@ -174,6 +199,69 @@ public class login extends AppCompatActivity {
                         txt_tele.length() == 14&&
                         Patterns.EMAIL_ADDRESS.matcher(txt_email.getText().toString()).matches()){
                     if(dat!=null){
+                        /*
+                        Dialog verification = new Dialog(v.getContext());
+                        verification.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                        verification.setContentView(R.layout.verification);
+                        verification.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        Button vtele = verification.findViewById(R.id.button_verefication_tele);
+                        Button vemail = verification.findViewById(R.id.button_verefication_email);
+                        verification.show();
+                        vemail.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String username="amiine.amiine123@gmail.com";
+                                String password="amine12356";//zvadnvuswrwehdve
+                                Properties props =System.getProperties();
+
+                                props.put("mail.smtp.ssl.enable" , "true");
+                                props.put("mail.smtp.host" , "smtp.gmail.com");
+                                props.put("mail.smtp.port" , "465");
+                                props.put("mail.smtp.auth" , "true");
+                                javax.mail.Session session =javax.mail.Session.getInstance(props ,
+                                            new javax.mail.Authenticator(){
+                                                @Override
+                                                protected PasswordAuthentication getPasswordAuthentication() {
+                                                    return new PasswordAuthentication(username , password);
+                                                }
+                                            });
+                                MimeMessage message = new MimeMessage(session);
+                                try {
+                                    message.addRecipient(Message.RecipientType.TO , new InternetAddress("naboulsiamine10062001@gmail.com"));
+                                    message.setSubject("aa");
+                                    message.setText("aaa");
+
+
+                                    Thread thread = new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                Transport.send(message);
+                                                Toast.makeText(login.this, "Send", Toast.LENGTH_SHORT).show();
+                                            } catch (Exception e) {
+                                                Toast.makeText(login.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+
+                                } catch (AddressException ex) {
+                                    Toast.makeText(login.this, ""+ex.getMessage(), Toast.LENGTH_SHORT).show();
+                                } catch (MessagingException e) {
+                                    Toast.makeText(login.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                        vtele.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ActivityCompat.requestPermissions(login.this ,new String[]{
+                                        Manifest.permission.SEND_SMS , Manifest.permission.READ_SMS
+                                } , PackageManager.PERMISSION_GRANTED);
+                                SmsManager mysms =SmsManager.getDefault();
+                                mysms.sendTextMessage("5555555522" , null ,"aminub" ,null , null);
+                                Toast.makeText(login.this, "Send", Toast.LENGTH_SHORT).show();
+                            }
+                        });*/
                         upload_img(dat);
                     }
                     else{
@@ -192,14 +280,14 @@ public class login extends AppCompatActivity {
         txt_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                txt_nom.setText("");
-                txt_cin.setText("");
-                txt_tele.setText("+212 ");
-                txt_email.setText("");
-                txt_password.setText("");
-                txt_password2.setText("");
+                txt_nom.setText("jgvh");
+                txt_cin.setText("ljj");
+                txt_tele.setText("+212 121254125");
+                txt_email.setText("amiinemiinsa@gmail.com");
+                txt_password.setText("zz");
+                txt_password2.setText("zz");
                 img.setImageResource(R.drawable.presone_add);
-
+                dat = null;
                 diyalog.show();
             }
         });
@@ -233,7 +321,7 @@ public class login extends AppCompatActivity {
                             test_password =snapshot.child("Comptes").child(item.getKey().toString()).child("password").getValue(String.class);
                             img_account =snapshot.child("Comptes").child(item.getKey().toString()).child("ref").getValue(String.class);
                             nom =snapshot.child("Comptes").child(item.getKey().toString()).child("nom").getValue(String.class);
-                            accounts.add(new account(nom ,test_email,test_password,img_account));
+                            accounts.add(new account(item.getKey().toString(),nom ,test_email,test_password,img_account));
                         }
                     }
                     @Override
@@ -251,10 +339,11 @@ public class login extends AppCompatActivity {
                 }
                 for (account item: accounts) {
                     if(email.getText().toString().equalsIgnoreCase(item.getEmail())&&password.getText().toString().equalsIgnoreCase(item.getPassword())){
+                        compoment.set__nom(nom);
+                        compoment.set__email(test_email);
+                        compoment.set__img(img_account);
+                        compoment.set__id(item.id.toString());
                         Intent it = new Intent(login.this , MainActivity.class);
-                        it.putExtra("img_account",item.getImage());
-                        it.putExtra("nom_account",item.getNom());
-                        it.putExtra("email_account",item.getEmail());
                         startActivity(it);
                         email.setError(null);
                         password.setError(null);
@@ -362,5 +451,21 @@ public class login extends AppCompatActivity {
 
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+    private void setlocal(String lang) {
+        Locale l = new Locale(lang);
+        Locale.setDefault(l);
+        Configuration config = new Configuration();
+        config.locale =l;
+        getBaseContext().getResources().updateConfiguration(config , getBaseContext().getResources().getDisplayMetrics() );
+        SharedPreferences.Editor editor = getSharedPreferences("settings_",MODE_PRIVATE).edit();
+        editor.putString("my_lang" , lang);
+        editor.apply();
+
+    }
+    private void getlocal() {
+        SharedPreferences preferences = getSharedPreferences("settings_",MODE_PRIVATE);
+        String lang =  preferences.getString("my_lang" ,"");
+        setlocal(lang);
     }
 }

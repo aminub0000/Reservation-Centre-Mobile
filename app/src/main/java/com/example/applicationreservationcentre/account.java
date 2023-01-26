@@ -1,12 +1,14 @@
 package com.example.applicationreservationcentre;
 
 public class account {
+    String id;
     String nom;
     String email;
     String password;
     String image;
 
-    public account(String nom, String email, String password, String image) {
+    public account(String id, String nom, String email, String password, String image) {
+        this.id = id;
         this.nom = nom;
         this.email = email;
         this.password = password;
