@@ -9,6 +9,7 @@
         android:padding="10dp"
         android:layout_width="50dp"
         android:layout_height="60dp"
+        android:src="@drawable/gray_wifi"
          />
     <TextView
         android:id="@+id/internet1"

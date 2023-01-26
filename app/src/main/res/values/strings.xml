@@ -8,6 +8,41 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_commentaire">Commentaire</string>
+    <string name="menu_reservation">Reservation</string>
+
+    <string name="txt_HELLO">Bonjour</string>
+    <string name="txt_SIGN_IN">"s'identifier a votre compte"</string>
+    <string name="HINT_EMAIL_LOGIN">Compte</string>
+    <string name="HINT_PASSWORD_LOGIN">Mot de passe</string>
+    <string name="my_text"><u>Mot de passe oublié ?</u></string>
+
+
+    <string name="txt_login">Login</string>
+    <string name="txt_setting">Paramétres</string>
+    <string name="txt_notifications">notifications</string>
+    <string name="txt_langues">langues</string>
+    <string name="txt_compte">Compte</string>
+    <string name="txt_theme">Theme</string>
+    <string name="txt_aide">Aide</string>
+
+    <string name="quiter">Quiter</string>
+    <string name="txt_quiter">Vous-voulez vraiment quiter votre compte</string>
+
+    <string name="ok">Oui</string>
+    <string name="annuler">annuler</string>
+
+    <string name="noaccount">Vous-avez pas un compte ?</string>
+    <string name="signup">S inscrire</string>
+
+    <string name="yesaccount">Vous-avez un compte !</string>
+    <string name="signuin">Connectez-vous</string>
+
+    <string name="nom">Nom</string>
+    <string name="cpassword">Confirmer mot de passe</string>
+
+    <string name="created">Compte créé</string>
+    <string name="create">Créé compte</string>
+    <string name="cin">CIN</string>
+
 </resources>

@@ -11,16 +11,17 @@
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_gravity="center"
-        style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:outlineSpotShadowColor="#E91E63"
         android:layout_marginLeft="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/plz"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        android:theme="@style/CustomTheme"
+        tools:ignore="MissingConstraints"
+        android:indeterminateTint="#6a62b7"
+        android:layout_marginRight="15dp"/>
     <TextView
         android:id="@+id/plz"
         android:layout_weight="1"
@@ -28,6 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Please wait"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.679"
