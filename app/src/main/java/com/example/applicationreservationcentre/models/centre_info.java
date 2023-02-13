@@ -1,7 +1,7 @@
-package com.example.applicationreservationcentre;
+package com.example.applicationreservationcentre.models;
 
 public class centre_info {
-    int image_centre;
+    String[] image_centre;
     String centre_name;
     String centre_maptext;
     String des;
@@ -34,23 +34,26 @@ public class centre_info {
         this.hair = hair;
     }
 
-    public centre_info(int image_centre, String centre_name, String centre_maptext, boolean wifi, boolean datashow, int nb_classroom, int hair,String des) {
+    public centre_info() {
+    }
+
+    public String getImage_centre(int i) {
+        return image_centre[i];
+    }
+
+    public void setImage_centre(String[] image_centre) {
+        this.image_centre = image_centre;
+    }
+
+    public centre_info(String[] image_centre, String centre_name, String centre_maptext, String des, boolean wifi, boolean datashow, int nb_classroom, int hair) {
         this.image_centre = image_centre;
         this.centre_name = centre_name;
         this.centre_maptext = centre_maptext;
+        this.des = des;
         this.wifi = wifi;
         this.datashow = datashow;
         this.nb_classroom = nb_classroom;
         this.hair = hair;
-        this.des = des;
-    }
-
-    public int getImage_centre() {
-        return image_centre;
-    }
-
-    public void setImage_centre(int image_centre) {
-        this.image_centre = image_centre;
     }
 
     public String getCentre_name() {

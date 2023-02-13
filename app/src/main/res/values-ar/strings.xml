@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <string name="txt_HELLO">مرحبا</string>
+    <string name="txt_SIGN_IN">تسجيل الدخو للحساب</string>
+    <string name="HINT_EMAIL_LOGIN">   حساب</string>
+    <string name="HINT_PASSWORD_LOGIN">رمز المرور</string>
+    <string name="my_text"><u>نسية رمز المرور ّ؟</u></string>
+
+    <string name="menu_home" >قائمة رئيسية</string>
+    <string name="menu_commentaire" >رئيسية1</string>
+    <string name="menu_reservation" >رئيسية2</string>
+
+
+    <string name="txt_login">تسجيل الدخول</string>
+    <string name="txt_setting">الاعدادات</string>
+    <string name="txt_notifications">اشعارات</string>
+    <string name="txt_langues" >اللغات</string>
+    <string name="txt_compte">الحساب</string>
+    <string name="txt_theme">الالوان</string>
+    <string name="txt_aide" >معلومات</string>
+
+    <string name="quiter">خروج</string>
+    <string name="txt_quiter" >اتريدون حقا الخروج من الحساب</string>
+
+    <string name="ok" >نعم</string>
+    <string name="annuler" >لا</string>
+
+    <string name="noaccount" >ليس لديك حساب ؟ </string>
+    <string name="signup" >اشتراك</string>
+
+    <string name="yesaccount" >هل لديك حساب !</string>
+    <string name="signuin" >تسجيل الدخول</string>
+
+    <string name="nom" >الاسم</string>
+    <string name="cpassword" >تاكيد رمز المرور</string>
+
+    <string name="created" >تم انشاء حسابك</string>
+
+    <string name="create" >انشاء</string>
+    <string name="cin">رقم بطاقة الوطنية</string>
+
+    <string name="logout">الخروج</string>
+</resources>

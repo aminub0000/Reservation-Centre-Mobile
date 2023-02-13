@@ -1,4 +1,4 @@
-package com.example.applicationreservationcentre;
+package com.example.applicationreservationcentre.models;
 
 import android.widget.ImageView;
 import android.widget.TextView;

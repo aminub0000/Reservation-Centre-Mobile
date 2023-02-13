@@ -1,14 +1,15 @@
-package com.example.applicationreservationcentre;
+package com.example.applicationreservationcentre.activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Menu;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.applicationreservationcentre.R;
+import com.example.applicationreservationcentre.models.compoment_;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity{
                 R.id.nav_home, R.id.nav_commentaire, R.id.nav_reservation)
                 .setOpenableLayout(drawer)
                 .build();
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
@@ -80,14 +82,7 @@ public class MainActivity extends AppCompatActivity{
 
             }
         });
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+        getSupportActionBar().hide();
     }
 
     @Override

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="txt_HELLO">Hello</string>
+    <string name="txt_SIGN_IN">"Sign In to your account"</string>
+    <string name="HINT_EMAIL_LOGIN">Email</string>
+    <string name="HINT_PASSWORD_LOGIN">Password</string>
+    <string name="my_text"><u>Forget password ?</u></string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_commentaire">Commentaire</string>
+    <string name="menu_reservation">Reservation</string>
+
+
+    <string name="txt_login">Login</string>
+    <string name="txt_setting" >Setting</string>
+    <string name="txt_notifications" >notifications</string>
+    <string name="txt_langues" >langues</string>
+    <string name="txt_compte" >Compte</string>
+    <string name="txt_theme" >Theme</string>
+    <string name="txt_aide" >Help</string>
+
+    <string name="quiter">Exit</string>
+    <string name="txt_quiter" >Do you want to close your account</string>
+
+    <string name="ok" >Ok</string>
+    <string name="annuler" >Cancel</string>
+
+    <string name="noaccount" >Dont have an account ?</string>
+    <string name="signup" >Sign Up</string>
+
+    <string name="yesaccount" >Already have an account !</string>
+    <string name="signuin" >Sign In</string>
+
+    <string name="nom" >Name</string>
+    <string name="cpassword" >Confirmer passsword</string>
+
+    <string name="created" >Account created</string>
+    <string name="create" >Create</string>
+    <string name="cin">NIC</string>
+
+    <string name="logout">Logout</string>
+</resources>

@@ -11,6 +11,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         app:cardCornerRadius="25dp"
+        android:elevation="15dp"
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -38,8 +39,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Centre Piace"
-                android:textSize="22dp"
-                android:textColor="#6a62b7"/>
+                android:textColor="#241C61"
+                android:textSize="21dp"
+                android:textStyle="bold"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -90,7 +92,6 @@
                         android:id="@+id/more"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        app:srcCompat="@drawable/purple_add"
                         android:scaleType="fitXY"
                         android:layout_margin="5dp"/>
                 </LinearLayout>

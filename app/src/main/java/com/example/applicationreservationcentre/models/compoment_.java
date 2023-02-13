@@ -1,4 +1,4 @@
-package com.example.applicationreservationcentre;
+package com.example.applicationreservationcentre.models;
 
 public class compoment_ {
     static String __id = "";

@@ -1,4 +1,4 @@
-package com.example.applicationreservationcentre;
+package com.example.applicationreservationcentre.adapters;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -11,6 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.applicationreservationcentre.R;
+import com.example.applicationreservationcentre.models.offre;
 
 import java.util.ArrayList;
 

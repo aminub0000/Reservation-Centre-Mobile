@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".comptes"
+    tools:context=".activitys.comptes"
     android:theme="@style/account_scroll_color"
     android:orientation="vertical">
 
@@ -28,10 +28,10 @@
                 android:src="@drawable/back" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginRight="50dp"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -44,7 +44,9 @@
                     android:textStyle="bold"
                     android:textColor="@color/black" />
             </LinearLayout>
-
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
         </LinearLayout>
 
         <ProgressBar
@@ -215,13 +217,13 @@
                     android:textColorHint="#7E7E7E"
                     app:boxStrokeColor="#6a62b7"
                     app:hintTextColor="#6a62b7"
+                    android:paddingRight="10dp"
                     app:prefixText="+212">
 
                     <EditText
                         android:id="@+id/txt_numtele_account"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingStart="3dp"
                         android:inputType="number"
                         android:maxLength="9"
                         android:textColorLink="#6a62b7" />
@@ -280,6 +282,7 @@
                     android:hint="Aniverssaire"
                     android:textColorHint="#7E7E7E"
                     app:boxStrokeColor="#6a62b7"
+                    android:paddingRight="3dp"
                     app:hintTextColor="#6a62b7">
 
                     <com.google.android.material.textfield.TextInputEditText

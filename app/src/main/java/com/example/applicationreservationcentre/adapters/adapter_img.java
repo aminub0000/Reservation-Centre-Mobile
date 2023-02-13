@@ -1,4 +1,4 @@
-package com.example.applicationreservationcentre;
+package com.example.applicationreservationcentre.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,12 +8,15 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.applicationreservationcentre.R;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class adapter_img extends RecyclerView.Adapter<adapter_img.ViewH> {
-    ArrayList<Integer> list_img = new ArrayList<>();
+    ArrayList<String> list_img = new ArrayList<>();
 
-    public adapter_img(ArrayList<Integer> list_img) {
+    public adapter_img(ArrayList<String> list_img) {
         this.list_img = list_img;
     }
 
@@ -27,7 +30,7 @@ public class adapter_img extends RecyclerView.Adapter<adapter_img.ViewH> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewH holder, int position) {
-        holder.img.setImageResource(list_img.get(position));
+        Picasso.get().load(list_img.get(position)).into(holder.img);
     }
 
     @Override

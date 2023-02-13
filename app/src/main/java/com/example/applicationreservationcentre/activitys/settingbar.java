@@ -1,4 +1,4 @@
-package com.example.applicationreservationcentre;
+package com.example.applicationreservationcentre.activitys;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
@@ -12,6 +12,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.applicationreservationcentre.R;
+import com.example.applicationreservationcentre.models.compoment_;
 
 import java.util.Locale;
 

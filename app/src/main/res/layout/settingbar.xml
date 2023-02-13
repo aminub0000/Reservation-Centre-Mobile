@@ -29,12 +29,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="?android:attr/selectableItemBackground"
-                    android:drawableLeft="@drawable/notifications"
-                    android:drawablePadding="8dp"
                     android:text="@string/txt_notifications"
-                    android:textAlignment="textStart"
                     android:textColor="#212B35"
+                    android:textAlignment="textStart"
                     android:paddingLeft="15dp"
+                    android:drawableStart="@drawable/notifications"
+                    android:drawablePadding="8dp"
+                    android:paddingRight="15dp"
                     app:iconTint="#212B35" />
             </TableRow>
             <View
@@ -53,12 +54,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:paddingRight="15dp"
                     android:background="?android:attr/selectableItemBackground"
                     android:text="@string/txt_langues"
                     android:textAlignment="textStart"
                     android:textColor="#212B35"
                     android:paddingLeft="15dp"
-                    android:drawableLeft="@drawable/language"
+                    android:drawableStart="@drawable/language"
                     android:drawablePadding="8dp"
                     app:iconTint="#212B35" />
             </TableRow>
@@ -78,12 +80,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:paddingRight="15dp"
                     android:background="?android:attr/selectableItemBackground"
                     android:text="@string/txt_compte"
                     android:textAlignment="textStart"
                     android:textColor="#212B35"
                     android:paddingLeft="15dp"
-                    android:drawableLeft="@drawable/compte"
+                    android:drawableStart="@drawable/compte"
                     android:drawablePadding="8dp"
                     app:iconTint="#212B35" />
             </TableRow>
@@ -106,9 +109,10 @@
                     android:background="?android:attr/selectableItemBackground"
                     android:text="@string/txt_theme"
                     android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
                     android:textAlignment="textStart"
                     android:textColor="#212B35"
-                    android:drawableLeft="@drawable/theme"
+                    android:drawableStart="@drawable/theme"
                     android:drawablePadding="8dp"
                     app:iconTint="#352122" />
             </TableRow>
@@ -139,9 +143,10 @@
                     android:background="?android:attr/selectableItemBackground"
                     android:text="@string/txt_aide"
                     android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
                     android:textAlignment="textStart"
                     android:textColor="#212B35"
-                    android:drawableLeft="@drawable/help"
+                    android:drawableStart="@drawable/help"
                     android:drawablePadding="8dp"
                     app:iconTint="#212B35" />
             </TableRow>
@@ -171,10 +176,11 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="?android:attr/selectableItemBackground"
-                    android:text="Logout"
+                    android:text="@string/logout"
+                    android:paddingRight="15dp"
                     android:textAlignment="textStart"
                     android:textColor="#FA3434"
-                    android:drawableLeft="@drawable/logout"
+                    android:drawableStart="@drawable/logout"
                     android:drawablePadding="8dp"
                     android:paddingLeft="15dp"
                     app:iconTint="#FF000D" />

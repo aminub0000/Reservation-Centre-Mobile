@@ -1,10 +1,19 @@
-package com.example.applicationreservationcentre;
+package com.example.applicationreservationcentre.models;
 
 public class account {
     String id;
     String nom;
     String email;
     String password;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     String image;
 
     public account(String id, String nom, String email, String password, String image) {
