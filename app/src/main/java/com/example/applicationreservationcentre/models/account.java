@@ -1,35 +1,27 @@
 package com.example.applicationreservationcentre.models;
 
 public class account {
-    String id;
-    String nom;
+
     String email;
     String password;
+    String nom;
+    String tele;
+    String ref;
+    String anniv;
+    String adresse;
+    String sexe;
+    String ville;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    String image;
-
-    public account(String id, String nom, String email, String password, String image) {
-        this.id = id;
-        this.nom = nom;
+    public account(String email, String password, String nom, String tele, String ref, String anniv, String adresse, String sexe, String ville) {
         this.email = email;
         this.password = password;
-        this.image = image;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
         this.nom = nom;
+        this.tele = tele;
+        this.ref = ref;
+        this.anniv = anniv;
+        this.adresse = adresse;
+        this.sexe = sexe;
+        this.ville = ville;
     }
 
     public String getEmail() {
@@ -48,11 +40,59 @@ public class account {
         this.password = password;
     }
 
-    public String getImage() {
-        return image;
+    public String getNom() {
+        return nom;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getTele() {
+        return tele;
+    }
+
+    public void setTele(String tele) {
+        this.tele = tele;
+    }
+
+    public String getRef() {
+        return ref;
+    }
+
+    public void setRef(String ref) {
+        this.ref = ref;
+    }
+
+    public String getAnniv() {
+        return anniv;
+    }
+
+    public void setAnniv(String anniv) {
+        this.anniv = anniv;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
     }
 }

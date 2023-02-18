@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.applicationreservationcentre.R;
+import com.example.applicationreservationcentre.models.account;
 import com.example.applicationreservationcentre.models.compoment_;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -37,6 +38,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -69,6 +72,7 @@ public class comptes extends AppCompatActivity {
 
     String Nom;
     String Email;
+    String password;
     String telephone;
     String adresse;
     String anniversaire;
@@ -78,7 +82,7 @@ public class comptes extends AppCompatActivity {
     TextView title_nom;
     AutoCompleteTextView dropdown_text;
     DatePickerDialog.OnDateSetListener setListener;
-
+    FirebaseFirestore firestore;
     compoment_ compoment = new compoment_();
     int counter =10;
     @Override
@@ -87,6 +91,7 @@ public class comptes extends AppCompatActivity {
         setContentView(R.layout.activity_comptes);
 
         ref = FirebaseDatabase.getInstance().getReference("Comptes");
+        firestore =FirebaseFirestore.getInstance();
         progressBar =findViewById(R.id.progress_bar);
         img_account =findViewById(R.id.img_account);
         back =findViewById(R.id.back);
@@ -182,7 +187,7 @@ public class comptes extends AppCompatActivity {
                                 finish();
                             }
                             else{
-                                update();
+                                update(compoment.get__img());
                                 finish();
                             }
                         }
@@ -222,18 +227,18 @@ public class comptes extends AppCompatActivity {
         }).start();
     }
     private void load_data() {
-        ref.addValueEventListener(new ValueEventListener() {
+        firestore.collection("Comptes").document(id_account).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Nom = snapshot.child(id_account).child("nom").getValue(String.class);
-                Email = snapshot.child(id_account).child("email").getValue(String.class);
-                telephone = snapshot.child(id_account).child("tele").getValue(String.class);
-                adresse = snapshot.child(id_account).child("adresse").getValue(String.class);
-                ville = snapshot.child(id_account).child("ville").getValue(String.class);
-                anniversaire = snapshot.child(id_account).child("anniv").getValue(String.class);
-                sexe = snapshot.child(id_account).child("sexe").getValue(String.class);
-                Img = snapshot.child(id_account).child("ref").getValue(String.class);
-
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Nom = documentSnapshot.getString("nom");
+                Email = documentSnapshot.getString("email");
+                telephone = documentSnapshot.getString("tele");
+                adresse = documentSnapshot.getString("adresse");
+                ville = documentSnapshot.getString("ville");
+                password = documentSnapshot.getString("password");
+                anniversaire = documentSnapshot.getString("anniv");
+                sexe = documentSnapshot.getString("sexe");
+                Img = documentSnapshot.getString("ref");
                 if(!Nom.isEmpty()){
                     counter +=10;
                 }
@@ -276,12 +281,6 @@ public class comptes extends AppCompatActivity {
                 txt_ville_account.setText(ville);
                 txt_cin_account.setText(id_account);
                 counter+=10;
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 
@@ -311,20 +310,20 @@ public class comptes extends AppCompatActivity {
         });
     }
 
-    private void update() {
-        ref.child(""+id_account).child("nom").setValue(txt_nom_account.getText().toString());
-        ref.child(""+id_account).child("email").setValue(txt_email_account.getText().toString());
-        ref.child(""+id_account).child("nom").setValue(txt_nom_account.getText().toString());
-        ref.child(""+id_account).child("tele").setValue(txt_numtele_account.getText().toString());
-        ref.child(""+id_account).child("anniv").setValue(""+txt_aniv_account.getText().toString());
-        ref.child(""+id_account).child("adresse").setValue(""+txt_adress_account.getText().toString());
-        ref.child(""+id_account).child("sexe").setValue(""+txt_sexe_account.getEditText().getText().toString());
-        ref.child(""+id_account).child("ville").setValue(""+txt_ville_account.getText().toString());
+    private void update(String img) {
+        account c = new account(
+                ""+txt_email_account.getText(),
+                ""+password,
+                ""+txt_nom_account.getText(),
+                ""+txt_numtele_account.getText(),
+                ""+img.toString()
+                ,""+txt_aniv_account.getText()
+                ,""+txt_adress_account.getText()
+                ,""+txt_sexe_account.getEditText()
+                ,""+txt_ville_account.getText());
+        firestore.collection("Comptes").document(""+id_account).set(c);
         compoment.set__nom(txt_nom_account.getText().toString());
         compoment.set__email(txt_email_account.getText().toString());
-    }
-    private void update(String img) {
-        ref.child(""+id_account).child("ref").setValue(""+compoment.get__img().toString());
     }
 
     @Override

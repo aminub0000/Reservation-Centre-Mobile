@@ -340,6 +340,7 @@ public class login extends AppCompatActivity {
                                     test_email =item.getString("email").toString();
                                     test_password =item.getString("password");
                                     nom =item.getString("nom");
+                                    img_account =item.getString("ref");
                                     compoment.set__nom(nom);
                                     compoment.set__email(test_email);
                                     compoment.set__img(img_account);
@@ -431,15 +432,14 @@ public class login extends AppCompatActivity {
                 tele+=txt_tele.getText().charAt(i);
             }
         }
-        ref.child(String.valueOf(txt_cin.getText())).child("email").setValue(txt_email.getText().toString());
-        ref.child(String.valueOf(txt_cin.getText())).child("password").setValue(txt_password.getText().toString());
-        ref.child(String.valueOf(txt_cin.getText())).child("nom").setValue(txt_nom.getText().toString());
-        ref.child(String.valueOf(txt_cin.getText())).child("tele").setValue(tele.toString());
-        ref.child(String.valueOf(txt_cin.getText())).child("ref").setValue(s.toString());
-        ref.child(String.valueOf(txt_cin.getText())).child("anniv").setValue("");
-        ref.child(String.valueOf(txt_cin.getText())).child("adresse").setValue("");
-        ref.child(String.valueOf(txt_cin.getText())).child("sexe").setValue("");
-        ref.child(String.valueOf(txt_cin.getText())).child("ville").setValue("");
+        account c = new account(
+                ""+txt_email.getText(),
+                ""+txt_password.getText(),
+                ""+txt_nom.getText(),
+                ""+tele.toString(),
+                ""+s.toString(),"","","","");
+        firestore.collection("Comptes").document(""+txt_cin.getText()).set(c);
+
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.created);

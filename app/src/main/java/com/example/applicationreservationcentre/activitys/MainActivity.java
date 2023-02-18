@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.applicationreservationcentre.R;
 import com.example.applicationreservationcentre.models.compoment_;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -29,6 +30,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity{
@@ -36,6 +39,10 @@ public class MainActivity extends AppCompatActivity{
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     compoment_ compoment;
+    FirebaseFirestore firestore;
+    ImageView img;
+    TextView nom;
+    TextView email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,26 +69,17 @@ public class MainActivity extends AppCompatActivity{
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         View headerView = navigationView.getHeaderView(0);
-        ImageView img = headerView.findViewById(R.id.slide_img_profil);
-        TextView nom = headerView.findViewById(R.id.slide_nom_profil);
-        TextView email = headerView.findViewById(R.id.slide_email_profil);
+        img = headerView.findViewById(R.id.slide_img_profil);
+        nom = headerView.findViewById(R.id.slide_nom_profil);
+        email = headerView.findViewById(R.id.slide_email_profil);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Comptes");
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Picasso.get().load(snapshot.child(compoment.get__id()).child("ref").getValue(String.class)).into(img);
-                nom.setText(snapshot.child(compoment.get__id()).child("nom").getValue(String.class));
-                email.setText(snapshot.child(compoment.get__id()).child("email").getValue(String.class));
-            }
+        firestore = FirebaseFirestore.getInstance();
+        nom.setText(compoment.get__nom());
+        email.setText(compoment.get__email());
+        Picasso.get().load(compoment.get__img()).into(img);
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
         getSupportActionBar().hide();
     }
 
