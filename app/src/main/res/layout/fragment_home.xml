@@ -3,50 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:paddingTop="15dp"
-    android:background="@drawable/bg_prp"
+    android:background="@drawable/dashbord_bacground"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
+    tools:context=".activitys.MainActivity">
     <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txt1"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <androidx.cardview.widget.CardView
+            android:layout_margin="15dp"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="16dp"
-            app:boxCornerRadiusBottomStart="25dp"
-            app:boxCornerRadiusTopStart="25dp"
-            app:boxStrokeColor="#6a62b7"
-            app:endIconDrawable="@drawable/clear"
-            app:endIconTint="#6a62b7"
-            app:boxBackgroundColor="#D5D4E3"
-            app:endIconMode="dropdown_menu"
-            app:startIconDrawable="@drawable/search"
-            android:layout_weight="1"
-            tools:ignore="MissingConstraints">
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="25dp">
 
-            <AutoCompleteTextView
-                android:id="@+id/dropdown_text"
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/CustomTheme"/>
+                android:layout_height="match_parent"/>
 
-        </com.google.android.material.textfield.TextInputLayout>
-        <ImageButton
-            android:id="@+id/btnSearch"
-            android:layout_width="50dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/search_btn"
-            android:backgroundTint="#6a62b7"
-            android:background="@drawable/corners_search"
-            android:layout_marginRight="16dp"/>
+
+        </androidx.cardview.widget.CardView>
+
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -56,10 +36,27 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"/>
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/shimmerlayout">
+
+            </include>
+
+
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleview1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         android:theme="@style/CustomTheme" />
 
 

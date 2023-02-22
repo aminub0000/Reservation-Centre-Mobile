@@ -10,6 +10,8 @@
     <color name="color_login_purple">#6a62b7</color>
     <color name="recycle_color">#657599</color>
     <color name="indecator_color">#3767D5</color>
+    <color name="red">#FF1100</color>
+    <color name="flatui_alizarin">#e74c3c</color>
 
     <color name="color_accont_inputtestlayout">#3A8FD3</color>
 </resources>

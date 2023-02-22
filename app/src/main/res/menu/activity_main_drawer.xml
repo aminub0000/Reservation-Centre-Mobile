@@ -13,12 +13,8 @@
             android:id="@+id/nav_commentaire"
             android:icon="@drawable/chat_icon"
             android:iconTint="#6a62b7"
-            android:title="@string/menu_commentaire" />
-        <item
-            android:id="@+id/nav_reservation"
-            android:icon="@drawable/chat_icon"
-            android:iconTint="#6a62b7"
             android:title="@string/menu_reservation" />
+
     </group>
     <group android:id="@+id/hvbj">
         <item

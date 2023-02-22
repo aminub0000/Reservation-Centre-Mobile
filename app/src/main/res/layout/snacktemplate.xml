@@ -4,18 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="60dp">
 
-    <ImageView
-        android:id="@+id/img1"
+    <ProgressBar
         android:padding="10dp"
         android:layout_width="50dp"
         android:layout_height="60dp"
-        android:src="@drawable/gray_wifi"
+        android:indeterminateTint="#C8C8C8"
          />
     <TextView
         android:id="@+id/internet1"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:textColor="#c3C3C3"
-        android:text="Vous etes hors ligne" />
+        android:textColor="#C8C8C8"
+        android:text="Authentification" />
 </LinearLayout>

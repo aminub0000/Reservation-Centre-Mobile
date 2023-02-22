@@ -2,176 +2,234 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llm"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/llm"
-    tools:context=".create_account">
-        <androidx.cardview.widget.CardView
-            android:id="@+id/crd1"
+    android:background="@drawable/signup_layout"
+    tools:context=".activitys.create_account">
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity=""
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="-45dp"
+        android:background="@drawable/login_circle_shape2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view10"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity=""
+        android:layout_marginEnd="-50dp"
+        android:layout_marginBottom="170dp"
+        android:background="@drawable/login_circle_shape2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="-100dp"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/login_circle_shape2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="-35dp"
+        android:layout_marginBottom="-90dp"
+        android:background="@drawable/login_circle_shape2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="8dp"
+        android:background="@drawable/corners_20"
+        android:backgroundTint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/crd1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.333" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/crd1"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        app:cardCornerRadius="80dp"
+        app:cardElevation="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img"
             android:layout_width="150dp"
             android:layout_height="150dp"
+            android:background="@drawable/stroke"
+            android:clickable="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/person_add_img" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/crd1"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crd1">
+
+        <EditText
+            android:id="@+id/txt_nom"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/plaintext_login"
+            android:drawableLeft="@drawable/person_purple"
+            android:drawablePadding="10dp"
+            android:hint="name"
+            android:inputType="textPersonName"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/txt_cin"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            app:cardCornerRadius="80dp"
-            app:cardElevation="14dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:background="@drawable/plaintext_login"
+            android:drawableLeft="@drawable/cni"
+            android:drawablePadding="10dp"
+            android:hint="cin"
+            android:inputType="textPersonName"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textSize="20dp" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/img"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:clickable="true"
-                android:src="@drawable/presone_add"
-                android:scaleType="fitXY" />
+        <EditText
+            android:id="@+id/txt_tele"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/plaintext_login"
+            android:drawableLeft="@drawable/tele_purple"
+            android:drawablePadding="10dp"
+            android:hint="number"
+            android:inputType="number"
+            android:maxLength="14"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textSize="20dp" />
 
-        </androidx.cardview.widget.CardView>
 
+        <EditText
+            android:id="@+id/txt_email"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/plaintext_login"
+            android:drawableLeft="@drawable/mail_icon"
+            android:drawablePadding="10dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text=""
+            android:textSize="20dp"
+            android:transitionName="emailtransiction" />
+
+        <EditText
+            android:id="@+id/txt_password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/plaintext_login"
+            android:drawableLeft="@drawable/lock_icon"
+            android:drawablePadding="10dp"
+            android:hint="Password"
+            android:inputType="textPersonName"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text=""
+            android:textSize="20dp"
+            android:transitionName="passwordtransiction" />
+
+        <EditText
+            android:id="@+id/txt_password2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/plaintext_login"
+            android:drawableLeft="@drawable/lock_icon"
+            android:drawablePadding="10dp"
+            android:hint="Confirme password"
+            android:inputType="textPersonName"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/button_create"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="45dp"
+            android:background="@drawable/button_chape_login"
+            android:text="Create"
+            tools:layout_editor_absoluteX="108dp" />
 
         <LinearLayout
-            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/crd1"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="50dp"
-            android:orientation="vertical"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/crd1">
+            android:layout_height="70dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/txt_nom"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/plaintext_login"
-                android:drawableLeft="@drawable/person_purple"
-                android:drawablePadding="10dp"
-                android:hint="name"
-                android:inputType="textPersonName"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/txt_cin"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/plaintext_login"
-                android:drawablePadding="10dp"
-                android:hint="cin"
-                android:inputType="textPersonName"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/txt_tele"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/plaintext_login"
-                android:drawableLeft="@drawable/tele_purple"
-                android:drawablePadding="10dp"
-                android:hint="number"
-                android:inputType="number"
-                android:maxLength="14"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:textSize="20dp" />
-
-
-            <EditText
-                android:id="@+id/txt_email"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/plaintext_login"
-                android:drawableLeft="@drawable/mail_icon"
-                android:drawablePadding="10dp"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:text=""
-                android:textSize="20dp"
-                android:transitionName="emailtransiction" />
-
-            <EditText
-                android:id="@+id/txt_password"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/plaintext_login"
-                android:drawableLeft="@drawable/lock_icon"
-                android:drawablePadding="10dp"
-                android:hint="Password"
-                android:inputType="textPersonName"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:text=""
-                android:textSize="20dp"
-                android:transitionName="passwordtransiction" />
-
-            <EditText
-                android:id="@+id/txt_password2"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/plaintext_login"
-                android:drawableLeft="@drawable/lock_icon"
-                android:drawablePadding="10dp"
-                android:hint="Confirme password"
-                android:inputType="textPersonName"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:textSize="20dp" />
-
-            <Button
-                android:id="@+id/button_create"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginLeft="45dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="45dp"
-                android:background="@drawable/button_chape_login"
-                android:text="Create"
-                tools:layout_editor_absoluteX="108dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal">
-
-
-            </LinearLayout>
 
         </LinearLayout>
 
-        <androidx.constraintlayout.utils.widget.ImageFilterView
-            android:id="@+id/add_picture"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:layout_marginEnd="108dp"
-            android:background="@drawable/login_circle_shape"
-            android:scaleType="centerInside"
-            android:src="@drawable/white_add"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/crd1"
-            app:layout_constraintVertical_bias="0.0" />
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/add_picture"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginEnd="108dp"
+        android:background="@drawable/login_circle_shape2"
+        android:scaleType="centerInside"
+        android:src="@drawable/white_add"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crd1"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

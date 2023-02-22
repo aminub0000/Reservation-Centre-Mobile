@@ -60,4 +60,14 @@
 
         <item name="colorPrimary">#6a62b7</item>
     </style>
+    <style name="img_account_" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">26dp</item>
+        <item name="strokeWidth">5dp</item>
+        <item name="strokeColor">#DF0000</item>
+    </style>
+    <style name="calendarecolor" parent="">
+
+        <item name="colorPrimary">#76A9FF</item>
+    </style>
 </resources>
