@@ -4,11 +4,26 @@ public class centre_info {
     String[] image_centre;
     String centre_name;
     String centre_maptext;
+    String centre_tele;
+    String email_tele;
     String des;
     boolean wifi;
     boolean datashow;
     int nb_classroom;
     int hair;
+
+    public centre_info(String[] image_centre, String centre_name, String centre_maptext, String centre_tele, String email_tele, String des, boolean wifi, boolean datashow, int nb_classroom, int hair) {
+        this.image_centre = image_centre;
+        this.centre_name = centre_name;
+        this.centre_maptext = centre_maptext;
+        this.centre_tele = centre_tele;
+        this.email_tele = email_tele;
+        this.des = des;
+        this.wifi = wifi;
+        this.datashow = datashow;
+        this.nb_classroom = nb_classroom;
+        this.hair = hair;
+    }
 
     public int getNb_classroom() {
         return nb_classroom;
@@ -45,15 +60,24 @@ public class centre_info {
         this.image_centre = image_centre;
     }
 
-    public centre_info(String[] image_centre, String centre_name, String centre_maptext, String des, boolean wifi, boolean datashow, int nb_classroom, int hair) {
-        this.image_centre = image_centre;
-        this.centre_name = centre_name;
-        this.centre_maptext = centre_maptext;
-        this.des = des;
-        this.wifi = wifi;
-        this.datashow = datashow;
-        this.nb_classroom = nb_classroom;
-        this.hair = hair;
+    public String[] getImage_centre() {
+        return image_centre;
+    }
+
+    public String getCentre_tele() {
+        return centre_tele;
+    }
+
+    public void setCentre_tele(String centre_tele) {
+        this.centre_tele = centre_tele;
+    }
+
+    public String getEmail_tele() {
+        return email_tele;
+    }
+
+    public void setEmail_tele(String email_tele) {
+        this.email_tele = email_tele;
     }
 
     public String getCentre_name() {

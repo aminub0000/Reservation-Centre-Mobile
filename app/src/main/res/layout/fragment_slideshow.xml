@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/dashbord_bacground"
-    tools:context=".ui.slideshow.SlideshowFragment">
+    tools:context=".ui.commentaire.SlideshowFragment">
 
     <eightbitlab.com.blurview.BlurView
         android:id="@+id/blurview"

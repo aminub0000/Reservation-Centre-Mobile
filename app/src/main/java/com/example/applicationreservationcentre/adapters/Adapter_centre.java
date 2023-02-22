@@ -45,7 +45,7 @@ public class Adapter_centre extends RecyclerView.Adapter<Adapter_centre.ViewHold
             holder.wifi.setImageResource(R.drawable.no_purple_wifi);
         }
         if(!list_centre.get(position).isDatashow()){
-            holder.wifi.setImageResource(R.drawable.no_white_datashow);
+            holder.datashow.setImageResource(R.drawable.np_purple_datashow);
         }
 
     }
@@ -65,6 +65,8 @@ public class Adapter_centre extends RecyclerView.Adapter<Adapter_centre.ViewHold
 
         TextView text_name;
         TextView map_texte;
+        TextView centre_tele;
+        TextView email_centre;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -76,6 +78,10 @@ public class Adapter_centre extends RecyclerView.Adapter<Adapter_centre.ViewHold
             more =itemView.findViewById(R.id.more);
             info_flaiche =itemView.findViewById(R.id.info_flaiche);
             icon_map =itemView.findViewById(R.id.icon_map);
+            icon_map =itemView.findViewById(R.id.icon_map);
+            icon_map =itemView.findViewById(R.id.icon_map);
+            centre_tele =itemView.findViewById(R.id.centre_tele);
+            email_centre =itemView.findViewById(R.id.email_centre);
 
             //TextView
             text_name =itemView.findViewById(R.id.texte_name);
@@ -83,7 +89,12 @@ public class Adapter_centre extends RecyclerView.Adapter<Adapter_centre.ViewHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    item_centre.centre_onclick_(getAdapterPosition(),img_centre ,text_name,map_texte,icon_map);
+                    item_centre.centre_onclick_(getAdapterPosition(),
+                            img_centre ,
+                            text_name,
+                            map_texte,
+                            icon_map,
+                            list_centre.get(getAdapterPosition()).getImage_centre(0));
                 }
             });
         }

@@ -4,12 +4,18 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,11 +31,14 @@ public class settingbar extends AppCompatActivity {
     TextView button_aide;
     TextView button_logout;
     compoment_ compoment = new compoment_();
+    private Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getlocal();
         setContentView(R.layout.settingbar);
+
         this.setTitle(R.string.txt_setting);
         ActionBar br = getSupportActionBar();
         //br.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -44,6 +53,7 @@ public class settingbar extends AppCompatActivity {
                 startActivity(it);
             }
         });
+        context = this;
         button_compte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +62,33 @@ public class settingbar extends AppCompatActivity {
             }
         });
         button_aide = findViewById(R.id.button_aide);
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(R.layout.custum_dialog_rate_app);
+
+        button_aide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.show();
+                dialog.findViewById(R.id.doneBtn).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        try {
+                            startActivity(new Intent(Intent.ACTION_VIEW,
+                                    Uri.parse("http://play.google.com/store/apps/details?id=" + context.getPackageName())));
+                        } catch (ActivityNotFoundException e) {
+                        }
+                    }
+                });
+                dialog.findViewById(R.id.cancelBtn).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+            }
+        });
 
         button_langues.setOnClickListener(new View.OnClickListener() {
             @Override

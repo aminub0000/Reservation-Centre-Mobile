@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_gravity="right"
+    android:layout_height="120dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:foregroundGravity="left"
+        android:layout_marginStart="32dp"
+        android:orientation="vertical"
+        android:elevation="2dp"
+        android:background="@drawable/corner_topleft_botom_left">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="6dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nom : "
+                    android:textColor="#76A9FF"/>
+
+                <TextView
+                    android:id="@+id/nom_reservation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Mon reservation de peace"
+                    android:textColor="#000000"/>
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/resultat_reservation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Accepté"
+                android:textSize="12dp"
+                android:textColor="#9D9D9D"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_centre"
+                android:layout_width="60dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="10dp"
+                android:layout_height="60dp"
+                android:src="@drawable/bg_prp"
+                android:scaleType="fitXY"
+                app:shapeAppearanceOverlay="@style/corners_img_profil"/>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/nom_centre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Centre Piace"
+                    android:layout_marginTop="12dp"
+                    android:textColor="#000000"/>
+                <LinearLayout
+                    android:gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="9dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Date :"
+                            android:textColor="#76A9FF"/>
+                        <TextView
+                            android:id="@+id/date_reservation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="04/01/2023"
+                            android:textSize="12dp"
+                            android:textColor="#000000"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="De :"
+                            android:textColor="#76A9FF"/>
+                        <TextView
+                            android:id="@+id/reservation_heure_debut"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="04/01/2023"
+                            android:textSize="12dp"
+                            android:textColor="#000000"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="À :"
+                        android:textColor="#76A9FF"/>
+                    <TextView
+                        android:id="@+id/reservation_heure_fin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="04/01/2023"
+                        android:textSize="12dp"
+                        android:textColor="#000000"/>
+
+                </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+        
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,13 +13,8 @@
 
     <fragment
         android:id="@+id/nav_commentaire"
-        android:name="com.example.applicationreservationcentre.ui.gallery.GalleryFragment"
+        android:name="com.example.applicationreservationcentre.ui.reservation.GalleryFragment"
         android:label="@string/menu_commentaire"
         tools:layout="@layout/fragment_gallery" />
 
-    <fragment
-        android:id="@+id/nav_reservation"
-        android:name="com.example.applicationreservationcentre.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_reservation"
-        tools:layout="@layout/fragment_slideshow" />
 </navigation>

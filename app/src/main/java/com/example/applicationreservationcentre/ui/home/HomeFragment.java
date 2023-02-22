@@ -12,6 +12,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityOptionsCompat;
@@ -46,10 +47,9 @@ import eightbitlab.com.blurview.RenderScriptBlur;
 public class HomeFragment extends Fragment implements centre_item, selectadapter.OnpikerListiner{
     RecyclerView rec_horizontal;
     RecyclerView recyclerView;
-    TextInputLayout txt1;
     AutoCompleteTextView dropdown_text;
     ArrayList<centre_info> list_centre = new ArrayList<>();
-    ImageButton btn_search;
+    ArrayList<centre_info> list_search = new ArrayList<>();
     private FragmentHomeBinding binding;
     FirebaseFirestore firestore =FirebaseFirestore.getInstance();
     CollectionReference ref =firestore.collection("Centres");
@@ -57,13 +57,10 @@ public class HomeFragment extends Fragment implements centre_item, selectadapter
     centre_info centre_info =new centre_info();
     centre_info c =new centre_info();
     String[] imgs = new String[4];
+    androidx.appcompat.widget.SearchView search;
     int index = 0;
     ShimmerFrameLayout shimmer ;
-    BlurView blurview;
-    ArrayList<String> items;
-    ArrayAdapter<String> adapter;
     Adapter_centre adapter_centre;
-    ArrayList<centre_info> centre_search = new ArrayList<>();
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -77,50 +74,11 @@ public class HomeFragment extends Fragment implements centre_item, selectadapter
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        ArrayList<String> li = new ArrayList<>();
 
         rec_horizontal = binding.recycleview;
-        blurview = binding.blurview;
         recyclerView =binding.recycleview1;
-        txt1 =binding.txt1;
-        btn_search =binding.btnSearch;
         shimmer =binding.shimmer;
-        float radius = 20f;
-        View decorView = getActivity().getWindow().getDecorView();
-        ViewGroup rootView = (ViewGroup) decorView.findViewById(android.R.id.content);
-
-        Drawable windowsBackground = decorView. getBackground();
-
-        blurview.setupWith(rootView)
-                .setFrameClearDrawable(windowsBackground)
-                .setBlurAlgorithm(new RenderScriptBlur( getContext()))
-                .setBlurRadius(radius)
-                .setBlurAutoUpdate(true)
-                .setHasFixedTransformationMatrix(true);
-
-        dropdown_text =binding.dropdownText;
-        txt1.getEditText().setSingleLine(true);
-        firestore.collection("Centres").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                if(!queryDocumentSnapshots.isEmpty()){
-                    items = new ArrayList<>();
-                    for(DocumentSnapshot item :queryDocumentSnapshots){
-                        items.add(item.getId().toString());
-                    }
-                    adapter = new ArrayAdapter<>(getActivity(),
-                            R.layout.dropdown_item,
-                            items );
-                    dropdown_text.setAdapter(adapter);
-                }
-            }
-        });
-        txt1.setEndIconOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                txt1.getEditText().setText("");
-            }
-        });
+        search =binding.search;
 
         ArrayList<offre> offreArrayList;
         offreArrayList = new ArrayList<>();
@@ -156,37 +114,62 @@ public class HomeFragment extends Fragment implements centre_item, selectadapter
                             centre_info.setHair(Integer.parseInt(d.getString("hair")));
                             centre_info.setDatashow(d.getBoolean("datashow"));
                             centre_info.setWifi(d.getBoolean("wifi"));
+                            centre_info.setEmail_tele(d.getString("email"));
+                            centre_info.setCentre_tele(d.getString("tele"));
+                            imgs = new String[4];
+                            imgs[0] = d.getString("ref1");
+                            imgs[1] = d.getString("ref2");
+                            imgs[2] = d.getString("ref3");
+                            imgs[3] = d.getString("ref4");
+                            centre_info.setImage_centre(imgs);
                             list_centre.add(centre_info);
-                            ref.document(""+d.getString("nom").toString())
-                                    .collection(""+d.getString("nom").toString()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                        @Override
-                                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-
-                                            for (DocumentSnapshot item : queryDocumentSnapshots) {
-                                                imgs = new String[4];
-                                                imgs[0] = item.getString("ref1");
-                                                imgs[1] = item.getString("ref2");
-                                                imgs[2] = item.getString("ref3");
-                                                imgs[3] = item.getString("ref4");
-                                                list_centre.get(index).setImage_centre(imgs);
-                                                index++;
-                                            }
-                                            adapter_centre.notifyDataSetChanged();
-                                            shimmer.stopShimmer();
-                                            shimmer.setVisibility(View.GONE);
-                                            recyclerView.setVisibility(View.VISIBLE);
-                                        }
-                                    });
-
+                            shimmer.stopShimmer();
+                            shimmer.setVisibility(View.GONE);
+                            recyclerView.setVisibility(View.VISIBLE);
                         }
 
                 }
+            }
+        });
+        search.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                list_search =new ArrayList<>();
+                if(newText.length()>0){
+                    for(int i =0 ; i<list_centre.size(); i++){
+                        if(list_centre.get(i).getCentre_name().toUpperCase().contains(newText.toUpperCase())){
+                            list_search.add( (centre_info) list_centre.get(i));
+                        }
+                    }
+                    change_recycle();
+
+                }
+                else{
+                    backto_recycle();
+                }
+                return false;
             }
         });
 
         return root;
     }
 
+    public void change_recycle(){
+        adapter_centre = new Adapter_centre(list_search ,this);
+        recyclerView.setAdapter(adapter_centre);
+        adapter_centre.notifyDataSetChanged();
+    }
+    public void backto_recycle(){
+        adapter_centre = new Adapter_centre(list_centre ,this);
+        recyclerView.setAdapter(adapter_centre);
+        adapter_centre.notifyDataSetChanged();
+    }
 
     @Override
     public void onDestroyView() {
@@ -217,11 +200,11 @@ public class HomeFragment extends Fragment implements centre_item, selectadapter
 
     }
     @Override
-    public void centre_onclick_(int pos, ImageView imgcentre, TextView name, TextView map, ImageView icon_map) {
+    public void centre_onclick_(int pos, ImageView imgcentre, TextView name, TextView map, ImageView icon_map,String imgUrl) {
         Intent intent = new Intent(getActivity() , MainActivity2.class);
-        intent.putExtra("img_centre",list_centre.get(pos).getImage_centre(0));
-        intent.putExtra("name_centre",list_centre.get(pos).getCentre_name());
-        intent.putExtra("map_centre",list_centre.get(pos).getCentre_maptext());
+        intent.putExtra("img_centre",imgUrl);
+        intent.putExtra("name_centre",name.getText().toString());
+        intent.putExtra("map_centre",map.getText().toString());
         intent.putExtra("des",list_centre.get(pos).getDes());
         Pair[] pairs =new Pair[4];
         pairs[0]= new Pair<View ,String>(imgcentre,"transaction_imgcente");

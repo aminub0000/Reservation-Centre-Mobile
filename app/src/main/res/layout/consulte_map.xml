@@ -27,7 +27,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:text="Demande de song"
+                android:text="Map"
                 android:textSize="20dp" />
 
             <ImageView

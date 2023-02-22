@@ -17,7 +17,7 @@
     <string name="txt_langues">langues</string>
     <string name="txt_compte">Compte</string>
     <string name="txt_theme">Theme</string>
-    <string name="txt_aide">Aide</string>
+    <string name="txt_aide">Feedback</string>
 
     <string name="quiter">Quiter</string>
     <string name="txt_quiter">Vous-voulez vraiment quiter votre compte</string>

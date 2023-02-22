@@ -90,6 +90,68 @@
                 android:backgroundTint="@color/black" />
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="7dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/centre_mail" />
+            <TextView
+                android:id="@+id/email_centre"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="centre@gmail.com"
+                android:textSize="18dp"
+                android:layout_marginLeft="5dp"
+                android:paddingTop="6dp"
+                android:transitionName="transaction_map"
+                android:gravity="left"/>
+            <Button
+                android:layout_width="3dp"
+                android:layout_height="45dp"
+                android:layout_gravity="end"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/black" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="7dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/centre_tele" />
+            <TextView
+                android:id="@+id/centre_tele"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="+212 654875412"
+                android:textSize="18dp"
+                android:layout_marginLeft="3dp"
+                android:paddingTop="6dp"
+                android:transitionName="transaction_map"
+                android:gravity="left"/>
+            <Button
+                android:layout_width="3dp"
+                android:layout_height="45dp"
+                android:layout_gravity="end"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/black" />
+
+        </LinearLayout>
         <TextView
             android:id="@+id/des"
             android:layout_width="wrap_content"
@@ -122,7 +184,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/reservation"
+                android:id="@+id/reservation_btn"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginLeft="60dp"

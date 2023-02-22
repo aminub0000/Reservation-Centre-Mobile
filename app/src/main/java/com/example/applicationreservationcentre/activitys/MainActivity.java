@@ -50,18 +50,12 @@ public class MainActivity extends AppCompatActivity{
         setContentView(binding.getRoot());
         compoment = new compoment_();
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_commentaire, R.id.nav_reservation)
+                R.id.nav_home, R.id.nav_commentaire)
                 .setOpenableLayout(drawer)
                 .build();
 
@@ -79,8 +73,6 @@ public class MainActivity extends AppCompatActivity{
         nom.setText(compoment.get__nom());
         email.setText(compoment.get__email());
         Picasso.get().load(compoment.get__img()).into(img);
-
-        getSupportActionBar().hide();
     }
 
     @Override

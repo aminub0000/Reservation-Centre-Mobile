@@ -70,6 +70,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import eightbitlab.com.blurview.BlurView;
+import okhttp3.internal.platform.Platform;
 
 public class login extends AppCompatActivity {
 
@@ -99,7 +100,9 @@ public class login extends AppCompatActivity {
     EditText txt_password;
     EditText txt_password2;
     private StorageTask mUploadTask;
+    Snackbar snackbar;
     compoment_ compoment = new compoment_();
+    boolean find;
     FirebaseFirestore firestore=FirebaseFirestore.getInstance();
     @SuppressLint("MissingInflatedId")
     @Override
@@ -112,6 +115,7 @@ public class login extends AppCompatActivity {
         final EditText email;
         //forget_password = findViewById(R.id.forget);
         button_login = findViewById(R.id.button_login);
+        button_login.setEnabled(true);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         txt_signup = findViewById(R.id.txt_signup);
@@ -142,7 +146,6 @@ public class login extends AppCompatActivity {
                 startActivityForResult(it,1);
             }
         });
-
         phone_number.setText("+212 ");
         Selection.setSelection(phone_number.getText(), phone_number.getText().length());
         phone_number.addTextChangedListener(new TextWatcher() {
@@ -328,15 +331,21 @@ public class login extends AppCompatActivity {
                     email.setError(null);
                     return;
                 }
-                myref =database.getReference();
+                snackbar =Snackbar.make(view , "" , Snackbar.LENGTH_SHORT);
+                Snackbar.SnackbarLayout layout = (Snackbar.SnackbarLayout) snackbar.getView();
+                View v = LayoutInflater.from(login.this).inflate(R.layout.snacktemplate , null);
+                layout.addView(v , 0);
+                snackbar.show();
                 firestore.collection("Comptes").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot q) {
-                        boolean find = false;
+                        find = false;
                         if(!q.isEmpty()){
+                            //button_login.setEnabled(false);
                             for(DocumentSnapshot item : q){
                                 if(email.getText().toString().equalsIgnoreCase(""+item.getString("email"))
                                         &&password.getText().toString().equalsIgnoreCase(""+item.getString("password"))){
+                                    invalide.setVisibility(View.INVISIBLE);
                                     test_email =item.getString("email").toString();
                                     test_password =item.getString("password");
                                     nom =item.getString("nom");
@@ -355,21 +364,15 @@ public class login extends AppCompatActivity {
                                     return;
                                 }
                             }
-                            if(!find) invalide.setVisibility(View.VISIBLE);
+                            if(!find) {
+                                again();
+                            }
                         }else{
-
                         }
-
-
                     }
                 });
                 /*if(TextUtils.isEmpty(test_email)&&TextUtils.isEmpty(test_password)){
-                    Snackbar snackbar =Snackbar.make(view , "" , Snackbar.LENGTH_SHORT);
-                    Snackbar.SnackbarLayout layout = (Snackbar.SnackbarLayout) snackbar.getView();
-                    View v = LayoutInflater.from(login.this).inflate(R.layout.snacktemplate , null);
-                    layout.addView(v , 0);
-                    snackbar.show();
-                    return;
+
                 }*/
             }
         });
@@ -379,6 +382,12 @@ public class login extends AppCompatActivity {
                 Toast.makeText(login.this, "Salam", Toast.LENGTH_SHORT).show();
             }
         });*/
+
+    }
+    public void again(){
+        invalide.setVisibility(View.VISIBLE);
+        button_login.setEnabled(true);
+        snackbar.dismiss();
 
     }
     private String getFileExtension(Uri uri) {

@@ -3,21 +3,18 @@ package com.example.applicationreservationcentre.activitys;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.applicationreservationcentre.R;
 import com.example.applicationreservationcentre.adapters.adapter_img;
@@ -47,8 +44,11 @@ public class MainActivity2 extends AppCompatActivity {
     RecyclerView Recycler;
     TextView name;
     TextView map;
+    TextView centre_tele;
+    TextView centre_email;
     TextView reservation;
     TextView des;
+    TextView reservation_btn;
     CollectionReference ref;
     FloatingActionButton fab;
     FirebaseFirestore firestore =FirebaseFirestore.getInstance();
@@ -58,6 +58,8 @@ public class MainActivity2 extends AppCompatActivity {
     BottomSheetDialog mapona;
     SupportMapFragment mapFragment;
     BottomSheetBehavior<View> bottomSheetBehavior;
+    String x;
+    String y;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,12 +70,16 @@ public class MainActivity2 extends AppCompatActivity {
         array.add(new equipement_model(false , false, 0, 0));
         array.add(new equipement_model(false , false, 0, 0));
         Recycler = findViewById(R.id.Recycler);
+        centre_tele = findViewById(R.id.centre_tele);
+        centre_email = findViewById(R.id.email_centre);
 
         GridLayoutManager G = new GridLayoutManager(getApplicationContext(),1,RecyclerView.HORIZONTAL,false);
         Recycler.setLayoutManager(G);
 
 
         fab =findViewById(R.id.fab);
+        reservation_btn =findViewById(R.id.reservation_btn);
+
         mapona = new BottomSheetDialog(this);
         //mapona.setContentView(R.layout.consulte_map);
         View bottomsheet = LayoutInflater.from(this).inflate(R.layout.consulte_map , null);
@@ -84,6 +90,14 @@ public class MainActivity2 extends AppCompatActivity {
         CoordinatorLayout layout =bottomsheet.findViewById(R.id.coo);
         layout.setMinimumHeight(Resources.getSystem().getDisplayMetrics().heightPixels);
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.MY_MAP);
+        mapFragment.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                LatLng paris = new LatLng(Integer.parseInt(x), Integer.parseInt(y));
+                googleMap.addMarker(new MarkerOptions().position(paris).title("Paris"));
+
+            }
+        });
         mapFragment.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(@NonNull GoogleMap googleMap) {
@@ -122,18 +136,21 @@ public class MainActivity2 extends AppCompatActivity {
         name =findViewById(R.id.name);
         map =findViewById(R.id.map);
         des =findViewById(R.id.des);
-        reservation =findViewById(R.id.reservation);
-        reservation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
         name.setText(getIntent().getStringExtra("name_centre"));
         map.setText(getIntent().getStringExtra("map_centre"));
+        //centre_tele.setText(getIntent().getStringExtra("centre_tele"));
+        //centre_email.setText(getIntent().getStringExtra("centre_email"));
         des.setText(getIntent().getStringExtra("des"));
         String[] images = new String[4];
         images[0]= getIntent().getStringExtra("img_centre");
-
+        reservation_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(MainActivity2.this , activity_reservation.class);
+                it.putExtra("nom" ,""+name.getText().toString());
+                startActivity(it);
+            }
+        });
         ViewPager2 v = findViewById(R.id.imgcentre);
         CircleIndicator3 indicator3 = findViewById(R.id.circle);
         ArrayList<String> li =new ArrayList<>();

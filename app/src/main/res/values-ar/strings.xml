@@ -10,7 +10,7 @@
     <string name="my_text"><u>نسية رمز المرور ّ؟</u></string>
 
     <string name="menu_home" >قائمة رئيسية</string>
-    <string name="menu_commentaire" >رئيسية1</string>
+    <string name="menu_commentaire" ></string>
     <string name="menu_reservation" >رئيسية2</string>
 
 
@@ -20,7 +20,7 @@
     <string name="txt_langues" >اللغات</string>
     <string name="txt_compte">الحساب</string>
     <string name="txt_theme">الالوان</string>
-    <string name="txt_aide" >معلومات</string>
+    <string name="txt_aide" >تقييم</string>
 
     <string name="quiter">خروج</string>
     <string name="txt_quiter" >اتريدون حقا الخروج من الحساب</string>
